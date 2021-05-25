@@ -10,9 +10,8 @@ using System.Text;
 namespace AspNetCore.RabbitMQ
 {
     /// <summary>
-    /// 
+    /// 后台托管服务
     /// </summary>
-    /// <seealso cref="Magicodes.Admin.Application.Core.RabbitMQ.RabbitListenerHostService" />
     public class MessageSubscribeHostService : RabbitListenerHostService
     {
         /// <summary>

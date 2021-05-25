@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿
 
 namespace AspNetCore.RabbitMQ
 {
@@ -24,6 +22,5 @@ namespace AspNetCore.RabbitMQ
         /// 
         /// </value>
         public QueueBaseOption QueueBase { get; set; }
-
     }
 }

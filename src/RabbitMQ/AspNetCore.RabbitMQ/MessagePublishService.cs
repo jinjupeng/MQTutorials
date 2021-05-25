@@ -1,12 +1,13 @@
 ﻿using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
-using System;
-using System.Collections.Generic;
 using System.Text;
 
 namespace AspNetCore.RabbitMQ
 {
+    /// <summary>
+    /// 消息发布服务
+    /// </summary>
     public class MessagePublishService : ITransientDependency
     {
         /// <summary>
