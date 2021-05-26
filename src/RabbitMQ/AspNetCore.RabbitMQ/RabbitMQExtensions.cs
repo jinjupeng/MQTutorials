@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace AspNetCore.RabbitMQ
 {
@@ -18,13 +19,22 @@ namespace AspNetCore.RabbitMQ
         /// <param name="services">The services.</param>
         /// <param name="option">The option.</param>
         /// <returns></returns>
-        public static IServiceCollection AddMessageQueueOption(this IServiceCollection services, IConfiguration cfg)
+        public static IServiceCollection AddMessageQueueOption(this IServiceCollection services, Action<MessageQueueOption> option)
+        {
+            services.Configure(option);
+            return services;
+        }
+
+        /// <summary>
+        /// Adds the register queue sub.
+        /// </summary>
+        /// <param name="services">The services.</param>
+        /// <param name="configuration">The option.</param>
+        /// <returns></returns>
+        public static IServiceCollection AddMessageQueueOption(this IServiceCollection services, IConfiguration configuration)
         {
             var config = new MessageQueueOption();
-            var section = cfg.GetSection("MessageQueue");
-            section?.Bind(config);
-
-            services.AddSingleton(config);
+            configuration.GetSection("MessageQueue").Bind(config);
             services.AddTransient<MessagePublishService>();
             return services;
         }
