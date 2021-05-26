@@ -19,10 +19,7 @@ namespace MQTest
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMessageQueueOption(options => {
-                options.QueueBase = (QueueBaseOption)services.Configure<QueueBaseOption>(Configuration.GetSection("MessageQueue:RabbitConnect"));
-                options.RabbitConnect = (RabbitConnectOption)services.Configure<RabbitConnectOption>(Configuration.GetSection("MessageQueue:QueueBase"));
-            });
+            services.AddMessageQueueOption(Configuration);
             services.AddMessageSubscribeHostService();
             services.AddControllers();
         }

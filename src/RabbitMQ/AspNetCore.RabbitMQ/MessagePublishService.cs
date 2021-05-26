@@ -8,7 +8,7 @@ namespace AspNetCore.RabbitMQ
     /// <summary>
     /// 消息发布服务
     /// </summary>
-    public class MessagePublishService : ITransientDependency
+    public class MessagePublishService
     {
         /// <summary>
         /// The channel

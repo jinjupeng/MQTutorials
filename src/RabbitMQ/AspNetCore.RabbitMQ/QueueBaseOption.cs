@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace AspNetCore.RabbitMQ
+﻿namespace AspNetCore.RabbitMQ
 {
     /// <summary>
     /// 队列配置基类
