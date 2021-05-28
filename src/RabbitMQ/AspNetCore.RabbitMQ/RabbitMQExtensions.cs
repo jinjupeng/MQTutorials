@@ -19,34 +19,23 @@ namespace AspNetCore.RabbitMQ
         /// <param name="services">The services.</param>
         /// <param name="option">The option.</param>
         /// <returns></returns>
-        public static IServiceCollection AddMessageQueueOption(this IServiceCollection services, Action<MessageQueueOption> option)
+        public static IServiceCollection AddRabbitMQ(this IServiceCollection services, Action<MessageQueueOption> option)
         {
             services.Configure(option);
+            // 服务自注册，实现自管理
+            services.AddHostedService<MessageSubscribeHostService>();
             return services;
         }
 
         /// <summary>
         /// Adds the register queue sub.
         /// </summary>
-        /// <param name="services">The services.</param>
-        /// <param name="configuration">The option.</param>
+        /// <param name="services"></param>
         /// <returns></returns>
-        public static IServiceCollection AddMessageQueueOption(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddRabbitMQ(this IServiceCollection services)
         {
-            var config = new MessageQueueOption();
-            configuration.GetSection("MessageQueue").Bind(config);
             services.AddTransient<MessagePublishService>();
-            return services;
-        }
-
-
-        /// <summary>
-        /// 服务自注册，实现自管理
-        /// </summary>
-        /// <param name="services">The services.</param>
-        /// <returns></returns>
-        public static IServiceCollection AddMessageSubscribeHostService(this IServiceCollection services)
-        {
+            // 服务自注册，实现自管理
             services.AddHostedService<MessageSubscribeHostService>();
             return services;
         }

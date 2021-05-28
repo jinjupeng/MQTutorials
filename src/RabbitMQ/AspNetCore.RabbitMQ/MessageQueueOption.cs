@@ -1,5 +1,7 @@
 ﻿
 
+using Microsoft.Extensions.Options;
+
 namespace AspNetCore.RabbitMQ
 {
     /// <summary>
