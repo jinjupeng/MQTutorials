@@ -86,5 +86,7 @@ namespace AspNetCore.RabbitMQ
         /// Processes this instance.
         /// </summary>
         protected abstract void Process();
+
+        //protected abstract Task ExecuteAsync(CancellationToken stoppingToken);
     }
 }
